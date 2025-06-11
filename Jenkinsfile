@@ -39,9 +39,9 @@ pipeline {
         stage('Docker Run') {
             steps {
                 sh '''
-                    docker stop voteapp || true
-                    docker rm voteapp || true
-                    docker run -d --name voteapp -p 80:80 $DOCKERHUB_USERNAME/$IMAGE_NAME:$IMAGE_TAG
+                    docker rm -f voteapp || true
+                    docker run -d --name voteapp -p 80:80 suru98/voteapp:latest
+                    
                 '''
             }
         }
